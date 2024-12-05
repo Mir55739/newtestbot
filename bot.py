@@ -11,8 +11,8 @@ TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     keyboard = [
-        [KeyboardButton("Запустить программу 1"), KeyboardButton("Запустить программу 2")],
-        [KeyboardButton("Запустить программу 3"), KeyboardButton("Запустить программу 4")]
+        [KeyboardButton("Биржи"), KeyboardButton("Спред")],
+        [KeyboardButton("Черный список")]
     ]
     reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True, one_time_keyboard=False)
     await update.message.reply_text('Пожалуйста, выберите программу:', reply_markup=reply_markup)
@@ -20,18 +20,15 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = update.message.text
 
-    if text == 'Запустить программу 1':
+    if text == 'Биржи':
         await update.message.reply_text('Запущена программа 1!')
         # Здесь можно добавить ваш код для запуска программы 1
-    elif text == 'Запустить программу 2':
+    elif text == 'Спред':
         await update.message.reply_text('Запущена программа 2!')
         # Здесь можно добавить ваш код для запуска программы 2
-    elif text == 'Запустить программу 3':
+    elif text == 'Черный список':
         await update.message.reply_text('Запущена программа 3!')
         # Здесь можно добавить ваш код для запуска программы 3
-    elif text == 'Запустить программу 4':
-        await update.message.reply_text('Запущена программа 4!')
-        # Здесь можно добавить ваш код для запуска программы 4
 
 def main():
     application = Application.builder().token(TOKEN).build()
